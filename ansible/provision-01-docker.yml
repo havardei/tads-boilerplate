@@ -8,6 +8,8 @@
 - hosts: docker
   become: True
   roles:
+    - role: robertdebock.update_package_cache
+
     - role: geerlingguy.pip
       vars:
         pip_install_packages:
