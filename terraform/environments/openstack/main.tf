@@ -17,7 +17,7 @@ module "openstack_tads" {
   floatingip_pool = ""
   worker_root_volume_size_in_gb = 80
   allowed_remote_ips = [""]
-  worker_allowed_ports = []
+  manager_allowed_ports = []
   image = ""
 }
 

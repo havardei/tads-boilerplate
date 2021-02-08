@@ -53,15 +53,15 @@ resource "openstack_networking_secgroup_rule_v2" "egress-swarm" {
 }
 
 
-resource "openstack_networking_secgroup_rule_v2" "worker_allowed_ports" {
-  count             = length(var.worker_allowed_ports)
+resource "openstack_networking_secgroup_rule_v2" "manager_allowed_ports" {
+  count             = length(var.manager_allowed_ports)
   direction         = "ingress"
   ethertype         = "IPv4"
-  protocol          = lookup(var.worker_allowed_ports[count.index], "protocol", "tcp")
-  port_range_min    = lookup(var.worker_allowed_ports[count.index], "port_range_min")
-  port_range_max    = lookup(var.worker_allowed_ports[count.index], "port_range_max")
-  remote_ip_prefix  = lookup(var.worker_allowed_ports[count.index], "remote_ip_prefix", "0.0.0.0/0")
-  security_group_id = openstack_networking_secgroup_v2.worker.id
+  protocol          = lookup(var.manager_allowed_ports[count.index], "protocol", "tcp")
+  port_range_min    = lookup(var.manager_allowed_ports[count.index], "port_range_min")
+  port_range_max    = lookup(var.manager_allowed_ports[count.index], "port_range_max")
+  remote_ip_prefix  = lookup(var.manager_allowed_ports[count.index], "remote_ip_prefix", "0.0.0.0/0")
+  security_group_id = openstack_networking_secgroup_v2.manager.id
 }
 
 resource "openstack_compute_instance_v2" "manager" {

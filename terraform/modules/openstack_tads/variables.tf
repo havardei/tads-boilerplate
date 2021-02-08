@@ -86,16 +86,9 @@ variable "allowed_egress_ips" {
   default     = ["0.0.0.0/0"]
 }
 
-variable "worker_allowed_ports" {
+variable "manager_allowed_ports" {
   type = list
 
-  default = [
-    {
-      "protocol"         = "tcp"
-      "port_range_min"   = 30000
-      "port_range_max"   = 32767
-      "remote_ip_prefix" = "0.0.0.0/0"
-    },
-  ]
+  default = []
 }
 

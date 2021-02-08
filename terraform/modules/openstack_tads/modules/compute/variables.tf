@@ -45,6 +45,6 @@ variable "allowed_egress_ips" {
 
 variable "wait_for_floatingip" {}
 
-variable "worker_allowed_ports" {
+variable "manager_allowed_ports" {
   type = list
 }

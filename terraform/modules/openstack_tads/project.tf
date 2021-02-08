@@ -40,7 +40,7 @@ module "compute" {
   worker_ips                                   = "${module.ips.worker_ips}"
   allowed_remote_ips                           = "${var.allowed_remote_ips}"
   allowed_egress_ips                           = "${var.allowed_egress_ips}"
-  worker_allowed_ports                         = "${var.worker_allowed_ports}"
+  manager_allowed_ports                        = "${var.manager_allowed_ports}"
   wait_for_floatingip                          = "${var.wait_for_floatingip}"
 
   network_id = "${module.network.router_id}"
