@@ -1,9 +1,14 @@
 ###
 # Terraform openstack environment template
 ##
+terraform {
+required_version = ">= 0.12.26"
+  required_providers {
+    openstack = {}
+  }
+}
 
 provider "openstack" {
-  version = "~> 1.17"
 }
 
 module "openstack_tads" {
@@ -17,7 +22,6 @@ module "openstack_tads" {
   floatingip_pool = ""
   worker_root_volume_size_in_gb = 80
   allowed_remote_ips = [""]
-  manager_allowed_ports = []
   image = ""
 }
 

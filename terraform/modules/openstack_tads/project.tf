@@ -1,5 +1,6 @@
 provider "openstack" {
   version = "~> 1.17"
+  use_octavia = true
 }
 
 module "network" {
@@ -46,6 +47,16 @@ module "compute" {
   network_id = "${module.network.router_id}"
 }
 
+module "lb" {
+  source = "./modules/lb"
+  project_name        = "${var.project_name}"
+  lb_ip               = "${module.ips.lb_ip}"
+  lb_subnet_id        = "${module.network.subnet_id}"
+  lb_member_address      = "${module.ips.manager_ips}"
+  wait_for_floatingip = "${var.wait_for_floatingip}"
+}
+
+
 output "ssh_user" {
   value = "${var.ssh_user}"
 }
@@ -54,4 +65,7 @@ output "manager_ips" {
 }
 output "worker_ips" {
   value = "${module.ips.worker_ips}"
+}
+output "lb_ip" {
+  value = "${module.ips.lb_ip}"
 }

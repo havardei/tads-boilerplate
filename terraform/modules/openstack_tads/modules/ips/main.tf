@@ -14,3 +14,8 @@ resource "openstack_networking_floatingip_v2" "worker" {
   pool       = var.floatingip_pool
   depends_on = [null_resource.dummy_dependency]
 }
+resource "openstack_networking_floatingip_v2" "lb" {
+  count      = 1
+  pool       = var.floatingip_pool
+  depends_on = [null_resource.dummy_dependency]
+}

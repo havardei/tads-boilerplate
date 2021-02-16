@@ -88,7 +88,42 @@ variable "allowed_egress_ips" {
 
 variable "manager_allowed_ports" {
   type = list
-
-  default = []
+  default = [{
+      "protocol"         = "tcp"
+      "port_range_min"   = 80
+      "port_range_max"   = 80
+      "remote_ip_prefix" = "0.0.0.0/0"
+    },
+    {
+      "protocol"         = "tcp"
+      "port_range_min"   = 443
+      "port_range_max"   = 443
+      "remote_ip_prefix" = "0.0.0.0/0"
+    }
+  ]
 }
 
+#variable "lb_ip" {
+#}
+
+variable "lb_pool_method" {
+  type        = string
+  default     = "ROUND_ROBIN"
+}
+
+variable "lb_pool_protocol" {
+  type        = string
+  default     = "TCP"
+}
+
+variable "lb_listener_protocol" {
+  type        = string
+  default     = "TCP"
+}
+#variable "lb_member_address" {
+#  type        = list(string)
+#}
+
+#variable "lb_subnet_id" {
+#  type        = string
+#}
