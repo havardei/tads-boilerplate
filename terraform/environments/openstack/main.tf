@@ -1,18 +1,11 @@
+
 ###
 # Terraform openstack environment template
 ##
-terraform {
-required_version = ">= 0.12.26"
-  required_providers {
-    openstack = {}
-  }
-}
-
-provider "openstack" {
-}
 
 module "openstack_tads" {
   source = "../../modules/openstack_tads"
+  public_key_path = ""
   project_name = "tads"
   number_of_managers = 1
   number_of_workers = 1
@@ -24,4 +17,3 @@ module "openstack_tads" {
   allowed_remote_ips = [""]
   image = ""
 }
-

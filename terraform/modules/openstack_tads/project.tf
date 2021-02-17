@@ -17,7 +17,7 @@ module "ips" {
   source = "./modules/ips"
 
   number_of_managers            = "${var.number_of_managers}"
-  number_of_workers             = "${var.number_of_managers}"
+  number_of_workers             = "${var.number_of_workers}"
   floatingip_pool               = "${var.floatingip_pool}"
   external_net                  = "${var.external_net}"
   network_name                  = "${var.network_name}"
